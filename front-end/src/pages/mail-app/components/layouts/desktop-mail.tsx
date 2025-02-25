@@ -9,7 +9,7 @@ import {
   Send,
   ShoppingCart,
   Trash2,
-  Users2,
+  Users2
 } from "lucide-react";
 import * as React from "react";
 
@@ -22,11 +22,12 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
+import { Outlet, useParams } from "react-router";
+import { accounts, mails } from "../../../../constants/mail-data";
 import { AccountSwitcher } from "../account-switcher";
+import LogoutButton from "../logout-button";
 import { MailList } from "../mail-list";
 import { Nav } from "../nav";
-import { accounts, mails } from "../../../../constants/mail-data";
-import { Outlet, useParams } from "react-router";
 import PleaseSelectMessage from "./please-select-message";
 
 const DesktopMail = () => {
@@ -158,6 +159,8 @@ const DesktopMail = () => {
                 },
               ]}
             />
+
+            <LogoutButton />
           </div>
         </ResizablePanel>
         <ResizableHandle withHandle />

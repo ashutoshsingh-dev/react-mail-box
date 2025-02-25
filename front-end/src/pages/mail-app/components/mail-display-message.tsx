@@ -2,6 +2,7 @@ import { addDays, addHours, format, nextSaturday } from "date-fns";
 import {
   Archive,
   ArchiveX,
+  X,
   Clock,
   Forward,
   MoreVertical,
@@ -17,7 +18,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {} from "@/components/ui/dropdown-menu";
 import { Label } from "@/components/ui/label";
@@ -34,9 +35,10 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import { mails } from "../../../constants/mail-data";
 import PleaseSelectMessage from "./layouts/please-select-message";
+import { cn } from "@/lib/utils";
 
 export function MailDisplayMessage() {
   const { mailId } = useParams();
@@ -50,6 +52,13 @@ export function MailDisplayMessage() {
       <div className="flex items-center p-2 h-[52px]">
         <div className="flex items-center gap-2">
           <Tooltip>
+            <Link
+              to="/"
+              className={cn(buttonVariants({ size: "icon", variant: "ghost" }))}
+            >
+              <X className="h-4 w-4" />
+              <span className="sr-only">Back to home</span>
+            </Link>
             <TooltipTrigger asChild>
               <Button variant="ghost" size="icon" disabled={!mail}>
                 <Archive className="h-4 w-4" />

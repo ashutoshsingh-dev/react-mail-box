@@ -28,6 +28,7 @@ import {
 } from "@/components/ui/sheet";
 import { Nav } from "../nav";
 import { Separator } from "@/components/ui/separator";
+import LogoutButton from "../logout-button";
 
 const MobileMail = () => {
   const { mailId } = useParams();
@@ -126,6 +127,8 @@ const MobileMail = () => {
                             },
                           ]}
                         />
+
+                        <LogoutButton />
                       </div>
                     </SheetHeader>
                   </SheetContent>

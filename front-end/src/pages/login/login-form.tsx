@@ -16,26 +16,23 @@ import { cn } from "@/lib/utils";
 
 import { LoginFormSchema, LoginFormTypes } from "./login-schema";
 import { Loader } from "@/components/ui/loading";
+import { useLogin } from "./hooks/use-login";
 
 const LoginForm = () => {
   const [isPending, startTransition] = useTransition();
+  const login = useLogin();
 
   const form = useForm<LoginFormTypes>({
     resolver: zodResolver(LoginFormSchema),
     defaultValues: {
-      email: "ashutosh.s@soniinfo.com",
-      password: "ashutosh.s@soniinfo.com",
+      email: "admin@gmail.com",
+      password: "admin@gmail.com",
     },
   });
 
   const onSubmit = async (data: LoginFormTypes) => {
     startTransition(() => {
-      return new Promise<void>((resolve) => {
-        setTimeout(() => {
-          console.log(data);
-          resolve();
-        }, 1000);
-      });
+      login.mutate(data);
     });
   };
 
