@@ -4,10 +4,11 @@ import { Routes } from "@/constants/routes-constants";
 import { AppLayout } from "@/components/layouts/app-layout";
 import { PrivateRoute, PublicRoute } from "@/router/route-guard";
 
-import HomePage from "@/pages/home-page";
 import ErrorPage from "@/router/error-page";
 import LoginPage from "@/pages/login/login-page";
 import RegitsterPage from "@/pages/register/register-page";
+import MailApp from "@/pages/mail-app/pages/mail-home-page";
+import { MailDisplayMessage } from "@/pages/mail-app/components/mail-display-message";
 
 export const router = createBrowserRouter([
   {
@@ -20,8 +21,14 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        index: true,
-        element: <HomePage />,
+        path: Routes.HOME,
+        element: <MailApp />,
+        children: [
+          {
+            path: "/:mailId",
+            element: <MailDisplayMessage />,
+          },
+        ],
       },
     ],
   },

@@ -5,7 +5,7 @@ interface RouteError {
   message?: string;
 }
 
-const ErrorPage: React.FC = () => {
+const ErrorPage = () => {
   const error = useRouteError();
 
   const routeError = error as RouteError;

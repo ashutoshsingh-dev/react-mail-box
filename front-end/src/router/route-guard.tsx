@@ -1,16 +1,11 @@
-import { FC } from "react";
 import { Navigate } from "react-router";
 
-type RouteProps = {
-  children: React.ReactNode;
-};
+const user = true;
 
-const user = false;
-
-export const PrivateRoute: FC<RouteProps> = ({ children }) => {
+export const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
   return user ? children : <Navigate to="/login" replace />;
 };
 
-export const PublicRoute: FC<RouteProps> = ({ children }) => {
+export const PublicRoute = ({ children }: { children: React.ReactNode }) => {
   return user ? <Navigate to="/" /> : children;
 };
