@@ -1,14 +1,13 @@
-import { lazy } from "react";
 import { createBrowserRouter } from "react-router";
 
 import { Routes } from "@/constants/routes-constants";
 import { AppLayout } from "@/components/layouts/app-layout";
 import { PrivateRoute, PublicRoute } from "@/router/route-guard";
 
-const HomePage = lazy(() => import("@/pages/home-page"));
-const ErrorPage = lazy(() => import("@/router/error-page"));
-const LoginPage = lazy(() => import("@/pages/login/login-page"));
-const RegitsterPage = lazy(() => import("@/pages/register/register-page"));
+import HomePage from "@/pages/home-page";
+import ErrorPage from "@/router/error-page";
+import LoginPage from "@/pages/login/login-page";
+import RegitsterPage from "@/pages/register/register-page";
 
 export const router = createBrowserRouter([
   {
@@ -30,7 +29,7 @@ export const router = createBrowserRouter([
     path: Routes.REGISTER,
     element: (
       <PublicRoute>
-        <LoginPage />
+        <RegitsterPage />
       </PublicRoute>
     ),
   },
@@ -39,7 +38,7 @@ export const router = createBrowserRouter([
 
     element: (
       <PublicRoute>
-        <RegitsterPage />
+        <LoginPage />
       </PublicRoute>
     ),
   },
