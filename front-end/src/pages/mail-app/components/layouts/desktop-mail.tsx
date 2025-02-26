@@ -9,7 +9,7 @@ import {
   Send,
   ShoppingCart,
   Trash2,
-  Users2
+  Users2,
 } from "lucide-react";
 import * as React from "react";
 
@@ -33,6 +33,12 @@ import PleaseSelectMessage from "./please-select-message";
 const DesktopMail = () => {
   const [isCollapsed, setIsCollapsed] = React.useState(false);
   const { mailId } = useParams();
+
+  const [filterMails, setFilterMails] = React.useState(mails);
+
+  function filterMailList(id: string) {
+    setFilterMails(mails.filter((item) => item.id !== id));
+  }
 
   return (
     <>
@@ -193,10 +199,10 @@ const DesktopMail = () => {
             </div>
             <div className="h-[calc(100vh-120px)] overflow-scroll">
               <TabsContent value="all" className="m-0 ">
-                <MailList items={mails} />
+                <MailList items={filterMails} onFilterMails={filterMailList} />
               </TabsContent>
               <TabsContent value="unread" className="m-0">
-                <MailList items={mails.filter((item) => !item.read)} />
+                {/* <MailList items={mails.filter((item) => !item.read)} /> */}
               </TabsContent>
             </div>
           </Tabs>
